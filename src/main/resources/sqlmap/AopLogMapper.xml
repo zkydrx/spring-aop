@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkyking.springaop.db.mapper.AopLogMapper">
+    <resultMap id="BaseResultMap" type="com.zkyking.springaop.db.model.AopLog">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        <!--@Table aop_log-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="elapsed_time" jdbcType="BIGINT" property="elapsedTime"/>
+        <result column="request_date" jdbcType="TIMESTAMP" property="requestDate"/>
+        <result column="request_url" jdbcType="LONGVARCHAR" property="requestUrl"/>
+        <result column="response" jdbcType="LONGVARCHAR" property="response"/>
+        <result column="operation_name" jdbcType="VARCHAR" property="operationName"/>
+        <result column="error" jdbcType="TINYINT" property="error"/>
+        <result column="request_uri" jdbcType="LONGVARCHAR" property="requestUri"/>
+        <result column="query_string" jdbcType="LONGVARCHAR" property="queryString"/>
+        <result column="remote_addr" jdbcType="LONGVARCHAR" property="remoteAddr"/>
+        <result column="remote_host" jdbcType="LONGVARCHAR" property="remoteHost"/>
+        <result column="remote_port" jdbcType="INTEGER" property="remotePort"/>
+        <result column="local_addr" jdbcType="LONGVARCHAR" property="localAddr"/>
+        <result column="local_name" jdbcType="LONGVARCHAR" property="localName"/>
+        <result column="method" jdbcType="LONGVARCHAR" property="method"/>
+        <result column="headers" jdbcType="LONGVARCHAR" property="headers"/>
+        <result column="parameters" jdbcType="LONGVARCHAR" property="parameters"/>
+        <result column="class_method" jdbcType="LONGVARCHAR" property="classMethod"/>
+        <result column="args" jdbcType="LONGVARCHAR" property="args"/>
+        <result column="statck" jdbcType="LONGVARCHAR" property="statck"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        id, elapsed_time, request_date, request_url, response, operation_name, error, request_uri,
+        query_string, remote_addr, remote_host, remote_port, local_addr, local_name, `method`,
+        headers, `parameters`, class_method, args, statck
+    </sql>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        update aop_log
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="elapsed_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.elapsedTime,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="request_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.requestDate,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="request_url = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.requestUrl,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="response = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.response,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="operation_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.operationName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="error = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.error,jdbcType=TINYINT}
+                </foreach>
+            </trim>
+            <trim prefix="request_uri = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.requestUri,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="query_string = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.queryString,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="remote_addr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.remoteAddr,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="remote_host = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.remoteHost,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="remote_port = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.remotePort,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="local_addr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.localAddr,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="local_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.localName,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`method` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.method,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="headers = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.headers,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`parameters` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.parameters,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="class_method = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.classMethod,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="args = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.args,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="statck = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.statck,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        update aop_log
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="elapsed_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.elapsedTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.elapsedTime,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="request_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.requestDate != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.requestDate,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="request_url = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.requestUrl != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.requestUrl,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="response = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.response != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.response,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="operation_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.operationName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.operationName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="error = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.error != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.error,jdbcType=TINYINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="request_uri = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.requestUri != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.requestUri,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="query_string = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.queryString != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.queryString,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="remote_addr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remoteAddr != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.remoteAddr,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="remote_host = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remoteHost != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.remoteHost,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="remote_port = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remotePort != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.remotePort,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="local_addr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.localAddr != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.localAddr,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="local_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.localName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.localName,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`method` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.method != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.method,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="headers = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.headers != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.headers,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`parameters` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.parameters != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.parameters,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="class_method = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.classMethod != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.classMethod,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="args = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.args != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.args,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="statck = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.statck != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.statck,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        insert into aop_log
+        (elapsed_time, request_date, request_url, response, operation_name, error, request_uri,
+        query_string, remote_addr, remote_host, remote_port, local_addr, local_name, `method`,
+        headers, `parameters`, class_method, args, statck)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.elapsedTime,jdbcType=BIGINT}, #{item.requestDate,jdbcType=TIMESTAMP},
+            #{item.requestUrl,jdbcType=LONGVARCHAR},
+            #{item.response,jdbcType=LONGVARCHAR}, #{item.operationName,jdbcType=VARCHAR},
+            #{item.error,jdbcType=TINYINT}, #{item.requestUri,jdbcType=LONGVARCHAR},
+            #{item.queryString,jdbcType=LONGVARCHAR},
+            #{item.remoteAddr,jdbcType=LONGVARCHAR}, #{item.remoteHost,jdbcType=LONGVARCHAR},
+            #{item.remotePort,jdbcType=INTEGER}, #{item.localAddr,jdbcType=LONGVARCHAR},
+            #{item.localName,jdbcType=LONGVARCHAR},
+            #{item.method,jdbcType=LONGVARCHAR}, #{item.headers,jdbcType=LONGVARCHAR},
+            #{item.parameters,jdbcType=LONGVARCHAR},
+            #{item.classMethod,jdbcType=LONGVARCHAR}, #{item.args,jdbcType=LONGVARCHAR},
+            #{item.statck,jdbcType=LONGVARCHAR}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.zkyking.springaop.db.model.AopLog"
+            useGeneratedKeys="true">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        insert into aop_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            elapsed_time,
+            request_date,
+            request_url,
+            response,
+            operation_name,
+            error,
+            request_uri,
+            query_string,
+            remote_addr,
+            remote_host,
+            remote_port,
+            local_addr,
+            local_name,
+            `method`,
+            headers,
+            `parameters`,
+            class_method,
+            args,
+            statck,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{elapsedTime,jdbcType=BIGINT},
+            #{requestDate,jdbcType=TIMESTAMP},
+            #{requestUrl,jdbcType=LONGVARCHAR},
+            #{response,jdbcType=LONGVARCHAR},
+            #{operationName,jdbcType=VARCHAR},
+            #{error,jdbcType=TINYINT},
+            #{requestUri,jdbcType=LONGVARCHAR},
+            #{queryString,jdbcType=LONGVARCHAR},
+            #{remoteAddr,jdbcType=LONGVARCHAR},
+            #{remoteHost,jdbcType=LONGVARCHAR},
+            #{remotePort,jdbcType=INTEGER},
+            #{localAddr,jdbcType=LONGVARCHAR},
+            #{localName,jdbcType=LONGVARCHAR},
+            #{method,jdbcType=LONGVARCHAR},
+            #{headers,jdbcType=LONGVARCHAR},
+            #{parameters,jdbcType=LONGVARCHAR},
+            #{classMethod,jdbcType=LONGVARCHAR},
+            #{args,jdbcType=LONGVARCHAR},
+            #{statck,jdbcType=LONGVARCHAR},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            elapsed_time = #{elapsedTime,jdbcType=BIGINT},
+            request_date = #{requestDate,jdbcType=TIMESTAMP},
+            request_url = #{requestUrl,jdbcType=LONGVARCHAR},
+            response = #{response,jdbcType=LONGVARCHAR},
+            operation_name = #{operationName,jdbcType=VARCHAR},
+            error = #{error,jdbcType=TINYINT},
+            request_uri = #{requestUri,jdbcType=LONGVARCHAR},
+            query_string = #{queryString,jdbcType=LONGVARCHAR},
+            remote_addr = #{remoteAddr,jdbcType=LONGVARCHAR},
+            remote_host = #{remoteHost,jdbcType=LONGVARCHAR},
+            remote_port = #{remotePort,jdbcType=INTEGER},
+            local_addr = #{localAddr,jdbcType=LONGVARCHAR},
+            local_name = #{localName,jdbcType=LONGVARCHAR},
+            `method` = #{method,jdbcType=LONGVARCHAR},
+            headers = #{headers,jdbcType=LONGVARCHAR},
+            `parameters` = #{parameters,jdbcType=LONGVARCHAR},
+            class_method = #{classMethod,jdbcType=LONGVARCHAR},
+            args = #{args,jdbcType=LONGVARCHAR},
+            statck = #{statck,jdbcType=LONGVARCHAR},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.zkyking.springaop.db.model.AopLog" useGeneratedKeys="true">
+        <!--@mbg.generated generated on Sun Dec 15 18:52:14 CST 2019.-->
+        insert into aop_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="elapsedTime != null">
+                elapsed_time,
+            </if>
+            <if test="requestDate != null">
+                request_date,
+            </if>
+            <if test="requestUrl != null">
+                request_url,
+            </if>
+            <if test="response != null">
+                response,
+            </if>
+            <if test="operationName != null">
+                operation_name,
+            </if>
+            <if test="error != null">
+                error,
+            </if>
+            <if test="requestUri != null">
+                request_uri,
+            </if>
+            <if test="queryString != null">
+                query_string,
+            </if>
+            <if test="remoteAddr != null">
+                remote_addr,
+            </if>
+            <if test="remoteHost != null">
+                remote_host,
+            </if>
+            <if test="remotePort != null">
+                remote_port,
+            </if>
+            <if test="localAddr != null">
+                local_addr,
+            </if>
+            <if test="localName != null">
+                local_name,
+            </if>
+            <if test="method != null">
+                `method`,
+            </if>
+            <if test="headers != null">
+                headers,
+            </if>
+            <if test="parameters != null">
+                `parameters`,
+            </if>
+            <if test="classMethod != null">
+                class_method,
+            </if>
+            <if test="args != null">
+                args,
+            </if>
+            <if test="statck != null">
+                statck,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="elapsedTime != null">
+                #{elapsedTime,jdbcType=BIGINT},
+            </if>
+            <if test="requestDate != null">
+                #{requestDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestUrl != null">
+                #{requestUrl,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="response != null">
+                #{response,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="operationName != null">
+                #{operationName,jdbcType=VARCHAR},
+            </if>
+            <if test="error != null">
+                #{error,jdbcType=TINYINT},
+            </if>
+            <if test="requestUri != null">
+                #{requestUri,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="queryString != null">
+                #{queryString,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remoteAddr != null">
+                #{remoteAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remoteHost != null">
+                #{remoteHost,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remotePort != null">
+                #{remotePort,jdbcType=INTEGER},
+            </if>
+            <if test="localAddr != null">
+                #{localAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="localName != null">
+                #{localName,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="method != null">
+                #{method,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="headers != null">
+                #{headers,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="parameters != null">
+                #{parameters,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="classMethod != null">
+                #{classMethod,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="args != null">
+                #{args,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="statck != null">
+                #{statck,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="elapsedTime != null">
+                elapsed_time = #{elapsedTime,jdbcType=BIGINT},
+            </if>
+            <if test="requestDate != null">
+                request_date = #{requestDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestUrl != null">
+                request_url = #{requestUrl,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="response != null">
+                response = #{response,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="operationName != null">
+                operation_name = #{operationName,jdbcType=VARCHAR},
+            </if>
+            <if test="error != null">
+                error = #{error,jdbcType=TINYINT},
+            </if>
+            <if test="requestUri != null">
+                request_uri = #{requestUri,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="queryString != null">
+                query_string = #{queryString,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remoteAddr != null">
+                remote_addr = #{remoteAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remoteHost != null">
+                remote_host = #{remoteHost,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remotePort != null">
+                remote_port = #{remotePort,jdbcType=INTEGER},
+            </if>
+            <if test="localAddr != null">
+                local_addr = #{localAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="localName != null">
+                local_name = #{localName,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="method != null">
+                `method` = #{method,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="headers != null">
+                headers = #{headers,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="parameters != null">
+                `parameters` = #{parameters,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="classMethod != null">
+                class_method = #{classMethod,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="args != null">
+                args = #{args,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="statck != null">
+                statck = #{statck,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>
