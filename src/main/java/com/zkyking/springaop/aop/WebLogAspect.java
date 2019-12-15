@@ -62,29 +62,14 @@ public class WebLogAspect
     @Before(value = "webLog()&& @annotation(controllerWebLog)")
     public void doBefore(JoinPoint joinPoint, ControllerWebLog controllerWebLog)
     {
-
         // 开始时间。
         long startTime = System.currentTimeMillis();
         // 获取HttpServletRequest
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
-
         AopLog aopLog = getAopLog(request, joinPoint);
-
         Map<String, Object> threadInfo = new HashMap<>();
         threadInfo.put(START_TIME, startTime);
-        // 请求参数。
-        StringBuilder requestStr = new StringBuilder();
-        Object[] args = joinPoint.getArgs();
-        if (args != null && args.length > 0)
-        {
-            for (Object arg : args)
-            {
-                requestStr.append(arg.toString());
-            }
-        }
-        threadInfo.put(REQUEST_PARAMS, requestStr.toString());
         threadInfo.put("aopLog", aopLog);
         threadLocal.set(threadInfo);
         logger.info("{}接口开始调用:requestData={}", controllerWebLog.name(), threadInfo.get(REQUEST_PARAMS));

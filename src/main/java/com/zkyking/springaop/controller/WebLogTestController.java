@@ -1,5 +1,7 @@
 package com.zkyking.springaop.controller;
 
+import com.zkyking.springaop.annotation.ControllerWebLog;
+import com.zkyking.springaop.annotation.DistributeLock;
 import com.zkyking.springaop.common.model.BaseRequest;
 import com.zkyking.springaop.common.model.BaseResponse;
 import io.swagger.annotations.Api;
@@ -27,7 +29,7 @@ public class WebLogTestController
 
     @GetMapping("/get-test")
     @ApiOperation("接口日志GET请求测试")
-    // @ControllerWebLog(name = "GET请求测试接口", intoDb = true)
+    @ControllerWebLog(name = "GET请求测试接口", intoDb = true)
     public String hello(@RequestParam("name") String name)
     {
         // int a = 100/0;
@@ -36,8 +38,8 @@ public class WebLogTestController
 
     @PostMapping("/post-test")
     @ApiOperation("接口日志POST请求测试")
-    // @ControllerWebLog(name = "接口日志POST请求测试", intoDb = true)
-    // @DistributeLock(key = "post_test_#{baseRequest.channel}", timeout = 10)
+    @ControllerWebLog(name = "接口日志POST请求测试", intoDb = true)
+    @DistributeLock(key = "post_test_#{baseRequest.channel}", timeout = 10)
     public BaseResponse postTest(@RequestBody @Valid BaseRequest baseRequest, BindingResult bindingResult)
     {
         try
